@@ -15,10 +15,10 @@ class CreatePessoasTable extends Migration
     {
         Schema::create('pessoas', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->string('sobrenome', 100);
-            $table->char('celular', 15);
-            $table->string('email', 200);
+            $table->string('name', 100)->nullable();
+            $table->string('sobrenome', 100)->nullable();
+            $table->char('celular', 15)->nullable();
+            $table->string('email', 200)->nullable();
             $table->timestamps();
         });
     }

@@ -57,16 +57,16 @@ class PessoasController extends Controller
 
         //store new customer
         $store = new Pessoa;   // valible and model name
-        $store-> name = $request->input('name');
-        $store-> sobrenome = $request->input('sobrenome');
-        $store-> celular = $request->input('celular');
-        $store-> email = $request->input('email');
+        $store-> name = $request->name;
+        $store-> sobrenome = $request->sobrenome;
+        $store-> celular = $request->celular;
+        $store-> email = $request->email;
 
 
         //save new customer
         $store->save();
 
-        return redirect('/')->with('success', "Acomodação Cadastrada com sucesso!");
+        return redirect('/')->with('success', "Contato Cadastrado com sucesso!");
 
     }
 

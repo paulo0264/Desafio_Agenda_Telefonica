@@ -17,7 +17,7 @@ use App\Http\Controllers\PessoasController;
     Route::get('/pessoas/create', [PessoasController::class, 'create']);
 
     // Post para cadastrar a nova pessoa
-    Route::post('/pessoas', [PessoasController::class, 'store']);
+    Route::post('/pessoas', [PessoasController::class, 'store'])->name('slavar_pessoa');
 
     // Post para Deletar a nova pessoa
     //Route::get('pessoas.destroy', [PessoasController::class, 'destroy'])->name('pessoas.destroy');

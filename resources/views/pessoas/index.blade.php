@@ -115,26 +115,26 @@
 
                 <div class="container">
 
-                    <form action="/pessoas/create" method="POST">
+                    <form action="{{ route('slavar_pessoa') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label>Nome</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Nome" required>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Nome" required autofocus autocomplete="name">
                         </div>
 
                         <div class="form-group">
                             <label>Sobrenome</label>
-                            <input type="text" name="sobrenome" class="form-control" placeholder="Sobrenome" required>
+                            <input type="text" id="sobrenome" name="sobrenome" class="form-control" placeholder="Sobrenome" required autofocus autocomplete="sobrenome">
                         </div>
 
                         <div class="form-group">
                             <label>Celular</label>
-                            <input type="text" name="celular" class="form-control" placeholder="celular" required>
+                            <input type="text" id="celular" name="celular" class="form-control" placeholder="celular" required autofocus autocomplete="celular">
                         </div>
 
                         <div class="form-group">
                             <label>E-mail</label>
-                            <input type="text" name="email" class="form-control" placeholder="E-mail" required>
+                            <input type="text" id="email" name="email" class="form-control" placeholder="E-mail" required autofocus autocomplete="email">
                         </div>
 
                             <a href="{{ url()->previous() }}" class="btn btn-warning" data-bs-dismiss="modal">Cancelar</a>
@@ -159,33 +159,8 @@
 
                 <div class="container">
 
-                    <form action="" method="">
-                        @csrf
-                        <div class="form-group">
-                            <label>Nome</label>
-                            <input class="form-control" name="name" />
-                        </div>
-
-                        <div class="form-group">
-                            <label>Sobrenome</label>
-                            <input class="form-control" name="sobrenome" />
-                        </div>
-
-                        <div class="form-group">
-                            <label>Celular</label>
-                            <input class="form-control" name="celular" />
-                        </div>
-
-                        <div class="form-group">
-                            <label>E-mail</label>
-                            <input class="form-control" name="email" />
-                        </div>
-                    <form>
+                   <h4>Editar Contato</h4>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <a href="{{ url()->previous() }}" class="btn btn-warning" data-bs-dismiss="modal">Cancelar</a>
-                <input class="btn btn-primary mt-3" type="submit" value="Cadastrar">
             </div>
         </div>
     </div>
