@@ -41,7 +41,7 @@
                     @foreach ($pessoas as $pessoa)
                     <tr>
                         <td>{{ $pessoa->id }}</td>
-                        <td>{{ $pessoa->nome }}</td>
+                        <td>{{ $pessoa->name }}</td>
                         <td>{{ $pessoa->sobrenome }}</td>
                         <td>{{ $pessoa->celular }}</td>
                         <td>{{ $pessoa->email }}</td>
@@ -83,8 +83,13 @@
                                     Tem certeza que Deseja Excluir esse Contato?
                                 </div>
                                 <div class="modal-footer">
-                                        <a href="{{ url()->previous() }}" class="btn btn-warning" data-bs-dismiss="modal">Cancelar</a>
-                                        <a href="" class="btn btn-danger">Deletar</a>
+                                    <form method="post" action="{{ route('pessoas.destroy', $pessoa->id) }}">
+                                        @csrf
+                                        <div class="form-item center">
+                                            <a href="{{ url()->previous() }}" class="btn btn-warning" data-bs-dismiss="modal">Cancelar</a>
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +164,32 @@
 
                 <div class="container">
 
-                   <h4>Editar Contato</h4>
+                    <form action="{{ route('atualiza_contato', ['id' => $pessoa->id]) }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="text" id="name" name="name" class="form-control" value="{{$pessoa->name}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Sobrenome</label>
+                            <input type="text" id="sobrenome" name="sobrenome" class="form-control" value="{{$pessoa->sobrenome}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Celular</label>
+                            <input type="text" id="celular" name="celular" class="form-control" value="{{$pessoa->celular}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input type="text" id="email" name="email" class="form-control" value="{{$pessoa->email}}">
+                        </div>
+
+                            <a href="{{ url()->previous() }}" class="btn btn-warning" data-bs-dismiss="modal">Cancelar</a>
+                            <input class="btn btn-primary mt-3" type="submit" value="Atualizar">
+                    <form>
+
                 </div>
             </div>
         </div>
@@ -178,9 +208,7 @@
 
                 <div class="container">
 
-                    <ul class="list-group">
 
-                    </ul>
                 </div>
             </div>
             <div class="modal-footer">

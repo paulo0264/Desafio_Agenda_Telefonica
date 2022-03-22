@@ -41,22 +41,9 @@ class PessoasController extends Controller
     // POST /store
     public function store(Request $request) {
 
-        // Salvamos o contato no banco de dados
-        /*$pessoa = new Pessoa;
-
-            $pessoa->name = $request->name;
-            $pessoa->sobrenome = $request->sobrenome;
-            $pessoa->celular = $request->celular;
-            $pessoa->email = $request->email;
-
-        $pessoa->save();*/
-
-
-
-
-
         //store new customer
-        $store = new Pessoa;   // valible and model name
+        $store = new Pessoa;
+
         $store-> name = $request->name;
         $store-> sobrenome = $request->sobrenome;
         $store-> celular = $request->celular;
@@ -70,11 +57,37 @@ class PessoasController extends Controller
 
     }
 
-   /* public function destroy($id){
+    public function edit($id){
+
         $pessoa = Pessoa::findOrFail($id);
-        $pessoa->delete();
+
+        return view('/{id}pessoas/editar',['pessoa' => $pessoa]);
+    }
+
+    // POST /store
+    public function update(Request $request, $id) {
+
+        //store new customer
+        $pessoa = Pessoa::findOrFail($id);
+
+        $pessoa-> name = $request->name;
+        $pessoa-> sobrenome = $request->sobrenome;
+        $pessoa-> celular = $request->celular;
+        $pessoa-> email = $request->email;
+
+        //save new customer
+        $pessoa->update();
+
+        return redirect('/')->with('success', "Contato Atualizado com sucesso!");
+
+    }
+
+   public function destroy($id){
+
+    $pessoa = Pessoa::find($id);
+    $pessoa->delete();
 
         return redirect()->route('pessoas.index')
-                        ->with('success','Contato Deletado com Sucesso!');
-    }*/
+                        ->with('delete','Contato Deletado com Sucesso!');
+    }
 }
